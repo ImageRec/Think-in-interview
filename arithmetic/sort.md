@@ -9,16 +9,17 @@
 所需辅助空间最少：堆排序
 平均速度最快：快速排序
 
-<span style="color:#000099">不稳定：快速排序，希尔排序，堆排序。</span>
+不稳定：快速排序，希尔排序，堆排序。
 
-<span style="color:#FF0000">**  ![](http://img.my.csdn.net/uploads/201209/07/1347008904_9606.jpg)
-**</span>
+**  ![](http://img.my.csdn.net/uploads/201209/07/1347008904_9606.jpg)
 
-<pre code_snippet_id="2461599" snippet_file_name="blog_20170627_1_2627190" name="code" class="java">// 排序原始数据
+```java
+// 排序原始数据
 private static final int[] NUMBERS =
-{49, 38, 65, 97, 76, 13, 27, 78, 34, 12, 64, 5, 4, 62, 99, 98, 54, 56, 17, 18, 23, 34, 15, 35, 25, 53, 51};</pre>
+{49, 38, 65, 97, 76, 13, 27, 78, 34, 12, 64, 5, 4, 62, 99, 98, 54, 56, 17, 18, 23, 34, 15, 35, 25, 53, 51};
+```
 
-<span style="color:#000099">**<span style="font-size:24px"> 1\. 直接插入排序</span>**</span>
+** 1、直接插入排序**
 
 基本思想：在要排序的一组数中，假设前面(n-1)[n>=2] 个数已经是排
 
@@ -28,7 +29,8 @@ private static final int[] NUMBERS =
 
 ![](http://img.my.csdn.net/uploads/201209/07/1347008997_4015.jpg)
 
-<pre code_snippet_id="2461599" snippet_file_name="blog_20170627_3_6582385" name="code" class="java"> public static void insertSort(int[] array) {
+```java
+public static void insertSort(int[] array) {
      for (int i = 1; i < array.length; i++) {
          int temp = array[i];
          int j = i - 1;
@@ -39,9 +41,10 @@ private static final int[] NUMBERS =
          array[j + 1] = temp;
      }
      System.out.println(Arrays.toString(array) + " insertSort");
- }</pre>
+ }
+ ```
 
-<span style="font-size:24px">**<span style="color:#000099">2<span style="color:rgb(0,0,153); font-size:24px">**. **</span>希尔排序</span>**</span>
+**2、希尔排序**
 
 希尔排序，也称递减增量排序算法，是插入排序的一种更高效的改进版本。希尔排序是非稳定排序算法。
 希尔排序是基于插入排序的以下两点性质而提出改进方法的：
@@ -51,7 +54,8 @@ private static final int[] NUMBERS =
 
 ![](http://img.blog.csdn.net/20170627134544822?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXkxMzg3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
-<pre code_snippet_id="2461599" snippet_file_name="blog_20170627_2_7803884" name="code" class="java">public static void shellSort(int[] array) {
+```java
+public static void shellSort(int[] array) {
     int i;
     int j;
     int temp;
@@ -68,9 +72,10 @@ private static final int[] NUMBERS =
         }
     }
     System.out.println(Arrays.toString(array) + " shellSort");
-}</pre>
+}
+```
 
-<span style="font-size:24px">**<span style="color:#000099">3<span style="color:rgb(0,0,153); font-size:24px">**. **</span>简单选择排序</span>**</span>
+**3、简单选择排序**
 
 基本思想：在要排序的一组数中，选出最小的一个数与第一个位置的数交换；
 
@@ -78,7 +83,8 @@ private static final int[] NUMBERS =
 
 ![](http://img.my.csdn.net/uploads/201209/07/1347009182_8908.jpg)
 
-<pre code_snippet_id="2461599" snippet_file_name="blog_20170627_3_6582385" name="code" class="java">public static void selectSort(int[] array) {
+```java
+public static void selectSort(int[] array) {
     int position = 0;
     for (int i = 0; i < array.length; i++) {
         int j = i + 1;
@@ -94,11 +100,10 @@ private static final int[] NUMBERS =
         array[i] = temp;
     }
     System.out.println(Arrays.toString(array) + " selectSort");
-}</pre>
+}
+```
 
-<span style="color:black"> </span>
-
-<span style="font-size:24px; color:#000099">**4<span style="color:rgb(0,0,153); font-size:24px">**. **</span>堆排序**</span>
+**4、堆排序**
 
 基本思想：堆排序是一种树形选择排序，是对直接选择排序的有效改进。
 
@@ -117,8 +122,8 @@ private static final int[] NUMBERS =
 ![](http://img.my.csdn.net/uploads/201209/07/1347009312_2298.jpg)
 
 依次类推：最后堆中剩余的最后两个结点交换，踢出一个，排序完成。
-
-<pre code_snippet_id="2461599" snippet_file_name="blog_20170627_4_8392528" name="code" class="java">public static void heapSort(int[] array) {
+```java
+public static void heapSort(int[] array) {
     /*
      *  第一步：将数组堆化
      *  beginIndex = 第一个非叶子节点。
@@ -166,15 +171,16 @@ private static void maxHeapify(int index, int len, int[] arr) {
         swap(cMax, index, arr);      // 如果父节点被子节点调换，
         maxHeapify(cMax, len, arr);  // 则需要继续判断换下后的父节点是否符合堆的特性。
     }
-}</pre>
-
-<span style="font-size:24px; color:#000099">**5<span style="color:rgb(0,0,153); font-size:24px">**. **</span>冒泡排序**</span>
+}
+```
+**5、冒泡排序**
 
 基本思想：在要排序的一组数中，对当前还未排好序的范围内的全部数，自上而下对相邻的两个数依次进行比较和调整，让较大的数往下沉，较小的往上冒。即：每当两相邻的数比较后发现它们的排序与排序要求相反时，就将它们互换。
 
 ![](http://img.my.csdn.net/uploads/201209/07/1347009396_8149.jpg)
 
-<pre code_snippet_id="2461599" snippet_file_name="blog_20170627_5_202673" name="code" class="java">public static void bubbleSort(int[] array) {
+```java
+public static void bubbleSort(int[] array) {
     int temp = 0;
     for (int i = 0; i < array.length - 1; i++) {
         for (int j = 0; j < array.length - 1 - i; j++) {
@@ -186,15 +192,17 @@ private static void maxHeapify(int index, int len, int[] arr) {
         }
     }
     System.out.println(Arrays.toString(array) + " bubbleSort");
-}</pre>
+}
+```
 
-<span style="color:#000099"><span style="background-color:rgb(255,255,255)"><span style="font-size:24px">**6<span style="color:rgb(0,0,153); font-size:24px">**. **</span>快速排序**</span></span></span>
+**6、快速排序**
 
 基本思想：选择一个基准元素,通常选择第一个元素或者最后一个元素,通过一趟扫描，将待排序列分成两部分,一部分比基准元素小,一部分大于等于基准元素,此时基准元素在其排好序后的正确位置,然后再用同样的方法递归地排序划分的两部分。
 
 ![](http://img.my.csdn.net/uploads/201209/07/1347009479_6587.jpg)
 
-<pre code_snippet_id="2461599" snippet_file_name="blog_20170627_6_3964663" name="code" class="java">public static void quickSort(int[] array) {
+```java
+public static void quickSort(int[] array) {
     _quickSort(array, 0, array.length - 1);
     System.out.println(Arrays.toString(array) + " quickSort");
 }
@@ -223,15 +231,16 @@ private static void _quickSort(int[] list, int low, int high) {
         _quickSort(list, low, middle - 1);      //对低字表进行递归排序
         _quickSort(list, middle + 1, high);      //对高字表进行递归排序
     }
-}</pre>
+}
+```
 
-<span style="color:#000099">**<span style="font-size:24px">7、归并排序</span>**</span>
+**7、归并排序**
 
 基本排序：归并（Merge）排序法是将两个（或两个以上）有序表合并成一个新的有序表，即把待排序序列分为若干个子序列，每个子序列是有序的。然后再把有序子序列合并为整体有序序列。
 
 ![](http://img.my.csdn.net/uploads/201209/07/1347009541_6721.jpg)
-
-<pre code_snippet_id="2461599" snippet_file_name="blog_20170627_7_7726654" name="code" class="java">public static void mergingSort(int[] array) {
+```java
+public static void mergingSort(int[] array) {
     sort(array, 0, array.length - 1);
     System.out.println(Arrays.toString(array) + " mergingSort");
 }
@@ -277,15 +286,16 @@ private static void merge(int[] data, int left, int center, int right) {
     while (tmp <= right) {
         data[tmp] = tmpArr[tmp++];
     }
-}</pre>
+}
+```
 
-<span style="font-size:24px; color:#000099">**8、基数排序**</span>
+**8、基数排序**
 
 基本思想：将所有待比较数值（正整数）统一为同样的数位长度，数位较短的数前面补零。然后，从最低位开始，依次进行一次排序。这样从最低位排序一直到最高位排序完成以后,数列就变成一个有序序列。
 
 ![](http://img.my.csdn.net/uploads/201209/07/1347009583_9101.jpg)
-
-<pre code_snippet_id="2461599" snippet_file_name="blog_20170627_8_8664745" name="code" class="java">public static void radixSort(int[] array) {
+```java
+public static void radixSort(int[] array) {
     //首先确定排序的趟数;
     int max = array[0];
     for (int i = 1; i < array.length; i++) {
@@ -329,9 +339,9 @@ private static void merge(int[] data, int left, int center, int right) {
         }
     }
     System.out.println(Arrays.toString(array) + " radixSort");
-}</pre>
-
+}
+```
 **结果**
 
-<span style="color:rgb(0,0,153); font-size:24px">**![](http://img.blog.csdn.net/20170627133629825?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXkxMzg3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
-**</span>
+![](http://img.blog.csdn.net/20170627133629825?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXkxMzg3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
+
